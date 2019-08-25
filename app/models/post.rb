@@ -5,6 +5,17 @@ class Post < ActiveRecord::Base
   belongs_to :author
 
   #put new code here
+  def self.by_author(author_id)
+    Post.where(id: author_id)
+  end
+
+  def self.from_today
+    Post.where("created_at >=?", Time.zone.today.beginning_of_day)
+  end
+
+  def self.old_news
+    Post.where("created_at <?", Time.zone.today.beginning_of_day)
+  end
 
   private
 
