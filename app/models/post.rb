@@ -5,6 +5,13 @@ class Post < ActiveRecord::Base
   belongs_to :author
 
   #put new code here
+  def self.by_author(author_id)
+    where(author: author_id)
+  end
+
+  def self.old_news
+    where("created_at <?", Time.zone.today.beginning_of_day)
+  end
 
   private
 
@@ -17,4 +24,5 @@ class Post < ActiveRecord::Base
   def make_title_case
     self.title = self.title.titlecase
   end
+
 end
