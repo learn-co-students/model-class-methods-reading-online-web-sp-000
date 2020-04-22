@@ -10,7 +10,11 @@
 <% @posts.each do |post| %>
   <div>
     <h2><%= post.title %></h2>
-    <h3>by: <%= link_to post.author.name, author_path(post.author) %></h3>
-    <p><%= post.description %></p>
+  <!-- change the name to a link -->
+  <h3>by: <%= link_to post.author.name, author_posts_path(post.author) %></h3>
+  <p><%= post.description %></p>
   </div>
 <% end %>
+
+  
+ 
