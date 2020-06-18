@@ -5,6 +5,18 @@ class Post < ActiveRecord::Base
   belongs_to :author
 
   #put new code here
+  def self.by_author(author_id)
+    Post.where(author_id: author_id)
+  end
+
+  def self.from_today
+    Post.all.find_all { |post| post.created_at.strftime("%m/%d/%Y") == Time.now.strftime("%m/%d/%Y") }
+  end
+
+  def self.old_news
+    Post.all.find_all { |post| post.created_at.strftime("%m/%d/%Y") != Time.now.strftime("%m/%d/%Y") }
+  end
+  
 
   private
 
