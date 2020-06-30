@@ -1,4 +1,22 @@
+
+
 <h1>Believe It Or Not I'm Blogging On Air</h1>
+
+<!-- add this new code above the @posts.each loop -->
+<%# this code allows us to filter our posts %>
+<div>
+  <h3>Filter posts:</h3>
+  <%= form_tag("/posts", method: "get") do %>
+    <%= select_tag "author", options_from_collection_for_select(@authors, "id", "name"), include_blank: true %>
+    <%= submit_tag "Filter" %>
+    <!-- new code -->
+    <!-- this code gives us button to filter posts by date -->
+    <%= select_tag "date", options_for_select(["Today", "Old News"]), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+<!-- end new code -->
+
 <% @posts.each do |post| %>
   <div>
     <h2><%= post.title %></h2>
