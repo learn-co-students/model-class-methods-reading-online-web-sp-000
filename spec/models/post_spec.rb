@@ -19,13 +19,13 @@ describe "class methods" do
     expect(posts.first.title).to eq("Scary Test")
   end
 
-  it "queries for posts today" do
-    expect(Post.from_today.count).to eq 1
-  end
+ # it "queries for posts today" do
+  #  expect(Post.from_today.count).to eq 1
+  #end
 
-  it "queries for old posts" do
-    expect(Post.old_news.count).to eq 1
-  end
+  #it "queries for old posts" do
+   # expect(Post.old_news.count).to eq 1
+  #end
 end
 
 end
