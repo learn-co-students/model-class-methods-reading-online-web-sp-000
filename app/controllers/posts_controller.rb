@@ -1,26 +1,17 @@
 class PostsController < ApplicationController
 
   def index
-    @authors = Author.all
- 
-    # filter the @posts list based on user input
-    if !params[:author].blank?
-      @posts = Post.by_author(params[:author])
-    elsif !params[:date].blank?
-      if params[:date] == "Today"
-        @posts = Post.from_today
-      else
-        @posts = Post.old_news
-      end
+    if params[:author_id]
+      @posts = Author.find(params[:author_id]).posts
     else
-      # if no filters are applied, show all posts
       @posts = Post.all
     end
   end
-
+ 
   def show
     @post = Post.find(params[:id])
   end
+
 
   def new
     @post = Post.new
